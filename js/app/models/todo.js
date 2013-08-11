@@ -11,12 +11,12 @@ App.Todo.FIXTURES = [
  },
  {
     id: 2,
-    title: '...',
+    title: 'Develop...',
     isCompleted: false
  },
  {
     id: 3,
-    title: 'Profit!',
+    title: 'Profit!!',
     isCompleted: false
  }
 ];
