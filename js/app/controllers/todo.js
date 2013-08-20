@@ -1,9 +1,14 @@
 ﻿App.TodoController = Ember.ObjectController.extend({
     isEditing: false,
 
-    editTodo: function () {
+    editTodo: function() {
         console.log("is " + this.get('isEditing'))
         this.set('isEditing', true);
+    },
+    
+    acceptChanges: function() {
+      this.set('isEditing', false);
+      this.get('model').save();
     },
 
     isCompleted: function(key, value){
