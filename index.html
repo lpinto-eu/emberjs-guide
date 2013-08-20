@@ -18,20 +18,25 @@
             <section id="main">
                 <ul id="todo-list">
                     {{#each controller itemController="todo"}}
-					  <li {{bindAttr class="isCompleted:completed"}}>
-						{{view Ember.Checkbox checkedBinding="isCompleted" class="toggle"}}
-						<label>{{title}}</label><button class="destroy"></button>
-					  </li>
-					{{/each}}
+                      <li {{bindAttr class="isCompleted:completed isEditing:editing"}}>
+                            {{#if isEditing}}
+                                <input class='edit'>
+                            {{else}}
+                                  {{view Ember.Checkbox checkedBinding="isCompleted" class="toggle"}}
+                                  <label {{action "editTodo" on="doubleClick"}}>{{title}}</label>
+                                  <button class="destroy"></button>
+                            {{/if}}
+                      </li>
+                    {{/each}}
                 </ul>
 
               <input type="checkbox" id="toggle-all">
             </section>
 
             <footer id="footer">
-				<span id="todo-count">
-					<strong>{{remaining}}</strong> {{inflection}} left
-				</span>
+                <span id="todo-count">
+                    <strong>{{remaining}}</strong> {{inflection}} left
+                </span>
               <ul id="filters">
                 <li>
                   <a href="all" class="selected">All</a>
@@ -66,9 +71,9 @@
     
     <script src="js/app/models/store.js"></script>
     <script src="js/app/models/todo.js"></script>
-	
-	<script src="js/app/controllers/todo.js"></script>
-	<script src="js/app/controllers/todos.js"></script>
+    
+    <script src="js/app/controllers/todo.js"></script>
+    <script src="js/app/controllers/todos.js"></script>
   </body>
 </html>
 
